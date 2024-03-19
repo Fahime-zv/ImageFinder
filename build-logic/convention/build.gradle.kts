@@ -27,5 +27,9 @@ gradlePlugin {
             id = "app.android.library"
             implementationClass = "payback.group.buildlogic.convention.plugin.AndroidLibraryPlugin"
         }
+        register("jvmLibrary") {
+            id = "app.jvm.library"
+            implementationClass = "payback.group.buildlogic.convention.plugin.JvmLibraryPlugin"
+        }
     }
 }
