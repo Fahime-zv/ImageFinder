@@ -35,5 +35,9 @@ gradlePlugin {
             id = "app.koin"
             implementationClass = "payback.group.buildlogic.convention.plugin.KoinPlugin"
         }
+        register("koinAndroid") {
+            id = "app.koin.android"
+            implementationClass = "payback.group.buildlogic.convention.pluginn.KoinAndroidPlugin"
+        }
     }
 }
