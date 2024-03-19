@@ -1,4 +1,5 @@
 @file:Suppress("UnstableApiUsage")
+
 pluginManagement {
     includeBuild("build-logic")
     repositories {
@@ -23,4 +24,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Image Finder"
 include(":app")
+include(":core:network")
+
  

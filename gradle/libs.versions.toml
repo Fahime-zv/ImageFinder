@@ -19,6 +19,7 @@ lifecycleRuntimeKtx = "2.6.1"
 activityCompose = "1.7.0"
 composeBom = "2023.08.00"
 material = "1.10.0"
+materialVersion = "1.11.0"
 
 
 [libraries]
@@ -52,6 +53,7 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material" }
 # Dependencies of the included build-logic
 agp = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
 kgp= { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+material = { group = "com.google.android.material", name = "material", version.ref = "materialVersion" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
