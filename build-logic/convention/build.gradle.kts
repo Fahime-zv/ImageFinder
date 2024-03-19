@@ -31,5 +31,9 @@ gradlePlugin {
             id = "app.jvm.library"
             implementationClass = "payback.group.buildlogic.convention.plugin.JvmLibraryPlugin"
         }
+        register("koin") {
+            id = "app.koin"
+            implementationClass = "payback.group.buildlogic.convention.plugin.KoinPlugin"
+        }
     }
 }
