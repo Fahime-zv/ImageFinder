@@ -20,3 +20,12 @@ dependencies {
     compileOnly(libs.agp)
     compileOnly(libs.kgp)
 }
+
+gradlePlugin {
+    plugins {
+        register("androidLibrary") {
+            id = "app.android.library"
+            implementationClass = "payback.group.buildlogic.convention.plugin.AndroidLibraryPlugin"
+        }
+    }
+}
