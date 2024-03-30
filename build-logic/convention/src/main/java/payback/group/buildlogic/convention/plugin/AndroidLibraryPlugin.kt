@@ -8,6 +8,7 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
+import org.gradle.kotlin.dsl.project
 
 class AndroidLibraryPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -23,6 +24,7 @@ class AndroidLibraryPlugin : Plugin<Project> {
             }
 
             dependencies {
+                add("implementation",project(":core:shared"))
                 add("implementation", libs.findLibrary("coroutines.core").get())
             }
         }
