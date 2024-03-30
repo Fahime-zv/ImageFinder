@@ -1,5 +1,18 @@
 @file:Suppress("UnstableApiUsage")
 
+include(":core:shared")
+
+
+include(":core:data")
+
+include(":core:model")
+
+
+include(":core:domain")
+
+
+
+
 pluginManagement {
     includeBuild("build-logic")
     repositories {
