@@ -48,15 +48,29 @@ android {
 
 dependencies {
 
+    implementation(project(":core:model"))
+    implementation(project(":core:domain"))
+    implementation(project(":core:shared"))
+
     implementation(libs.core.ktx)
+    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
+    implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    testImplementation(libs.koin.test.junit4 )
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.coil)
+    implementation(libs.paging3)
+    implementation(libs.material)
+    testImplementation(libs.koin.test.junit4)
     androidTestImplementation(libs.junit)
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.koin.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
+
 }
