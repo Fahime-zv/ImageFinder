@@ -9,14 +9,12 @@ import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
 
 
-const val baseUrl: String = "https://pixabay.com/api"
+const val BASE_URL: String = "https://pixabay.com"
 
 
 internal class ServiceCreator private constructor(private val builder: Builder) {
 
     private var retrofit: Retrofit
-
-    val baseUrl: String="https://pixabay.com/api"
 
     init {
         val okHttpClient = OkHttpClient.Builder().apply {
@@ -86,7 +84,7 @@ internal class ServiceCreator private constructor(private val builder: Builder) 
                 vararg interceptors: Interceptor
             ): ServiceCreator {
                 val builder = Builder(
-                    baseUrl =baseUrl,
+                    baseUrl = BASE_URL,
                     converterFactory = jsonConverterFactory
                 )
                 builder.followRedirects(true)
