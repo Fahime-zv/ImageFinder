@@ -18,57 +18,53 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
+import payback.group.imagefinder.ui.theme.NotFound
 
 @Composable
 fun Loader() {
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(8.dp),
+        modifier = Modifier.fillMaxSize().padding(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        CircularProgressIndicator(
-            modifier = Modifier
-                .size(50.dp)
-                .padding(10.dp),
-            color = Color.Black
-        )
+        CircularProgressIndicator(modifier = Modifier.size(50.dp).padding(10.dp), color = Color.Blue)
     }
 }
 
-
 @Composable
-fun HeadingTextComponent(value: String) {
+fun HeadingTextComponent(value: String,modifier: Modifier=Modifier) {
     Text(
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight()
-            .padding(8.dp),
+        modifier = modifier,
         text = value,
-        style = TextStyle(
-            fontSize = 12.sp,
-            fontWeight = FontWeight.Medium
-        )
+        style = TextStyle(fontSize = 16.sp, color = Color.Black, fontWeight = FontWeight.Bold)
     )
 }
-
 
 @Composable
 fun NormalTextComponent(value: String) {
     Text(
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight()
-            .padding(8.dp),
+        modifier = Modifier,
         text = value,
-        style = TextStyle(
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Normal,
-            fontFamily = FontFamily.Monospace,
-            color = Color.Blue
-        )
+        style = TextStyle(fontSize = 12.sp, fontWeight = FontWeight.Light, fontFamily = FontFamily.Monospace, color = Color.Gray)
     )
 }
 
+@Composable
+fun BeautyTextComponent(value: String,modifier: Modifier=Modifier) {
+    Text(
+        modifier = modifier,
+        text = value,
+        style = TextStyle(fontSize = 14.sp, fontWeight = FontWeight.Normal, fontFamily = FontFamily.Serif, color = Color.Black)
+    )
+}
+
+@Composable
+fun EmptyComponent(text:String) {
+    Column(
+        modifier = Modifier.fillMaxSize().padding(8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        HeadingTextComponent(value = text)
+    }
+}
