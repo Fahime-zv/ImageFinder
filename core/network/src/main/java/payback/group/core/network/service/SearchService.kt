@@ -9,6 +9,8 @@ interface SearchService {
     suspend fun search(
         @Query("q") term: String?=null,
         @Query("id") id: String?=null,
+        @Query("page") page: Int? = null,
+        @Query("per_page") perPage: Int? = null,
     ): SearchResponse
 
 }

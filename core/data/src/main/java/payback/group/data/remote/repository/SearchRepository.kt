@@ -8,7 +8,7 @@ import payback.group.shared.FResult
 import payback.group.shared.mapIfSuccess
 
 interface SearchRepository {
-    suspend fun search(term: String): FResult<Search>
+    suspend fun search(term: String, page: Int, perPage: Int): FResult<Search>
     suspend fun detail(id: String): FResult<Search.Hit>
 }
 
@@ -16,8 +16,8 @@ internal class SearchRepositoryImpl(
     private val searchService: SearchService,
 ) : SearchRepository {
 
-    override suspend fun search(term: String): FResult<Search> {
-        return safeApiCall { searchService.search(term = term) }.mapIfSuccess { it.map() }
+    override suspend fun search(term: String, page: Int, perPage: Int): FResult<Search> {
+        return safeApiCall { searchService.search(term = term, page = page, perPage = perPage) }.mapIfSuccess { it.map() }
     }
 
     override suspend fun detail(id: String): FResult<Search.Hit> {
