@@ -1,49 +1,31 @@
 package payback.group.imagefinder.ui.screen.search
 
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import payback.group.domain.usecases.SearchImageUseCase
+import androidx.paging.cachedIn
 import payback.group.imagefinder.architecture.BaseViewModel
+import payback.group.imagefinder.ui.screen.search.paging.SearchPagingFactory
 import payback.group.model.Search
-import payback.group.shared.DispatcherProvider
-import payback.group.shared.FResult
+import payback.group.model.Word
 
 class SearchViewModel(
-    private val searchImageUseCase: SearchImageUseCase,
-    private val dispatcherProvider: DispatcherProvider,
+    private val searchPagingFactory: SearchPagingFactory,
 ) : BaseViewModel<Search, SearchAction>() {
 
-    private var job: Job? = null
+    private val term: Word = Word("fruits")
 
-    init {
-        dispatch(SearchAction.DoingSearch("fruits"))
-    }
+    val pagingFlow = searchPagingFactory.pagingDataFlow(term).cachedIn(viewModelScope)
 
     override fun dispatch(action: SearchAction) {
         super.dispatch(action)
+
         when (action) {
             is SearchAction.DoingSearch -> {
-
-                job?.cancel()
-
-                job = viewModelScope.launch(dispatcherProvider.io) {
-                    setLoadingState(onFrontOfContent = true)
-                    when (val result = searchImageUseCase(action.term)) {
-                        is FResult.Error -> setErrorState(result)
-                        is FResult.Success -> {
-                            val items = result.value.hits
-                            if (items.isNotEmpty())
-                                setSuccessState(result.value)
-                            else
-                                setEmptyState("Nothing to saecrh")
-                        }
-                    }
-
-                }
-
+                term.keyword = action.term
+                searchPagingFactory.invalidate()
             }
-
         }
+
     }
+
 }
+

@@ -3,14 +3,12 @@ package payback.group.imagefinder.ui.screen.search
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
@@ -42,20 +40,6 @@ import payback.group.imagefinder.ui.component.NormalTextComponent
 import payback.group.imagefinder.ui.theme.MainColor
 import payback.group.imagefinder.ui.theme.SearcHint
 import payback.group.model.Search
-
-
-@Composable
-fun SearchList(list: List<Search.Hit>, onItemCLickListener: (Search.Hit) -> Unit) {
-    LazyColumn(
-        modifier = Modifier.fillMaxWidth(),
-        contentPadding = PaddingValues(8.dp)
-    ) {
-        items(list.size) { index ->
-            ItemRowComponent(hit = list[index], onItemCLickListener = onItemCLickListener)
-        }
-    }
-
-}
 
 @Composable
 fun ItemRowComponent(hit: Search.Hit, onItemCLickListener: (Search.Hit) -> Unit) {
