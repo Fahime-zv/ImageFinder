@@ -3,6 +3,7 @@ package payback.group.imagefinder.ui.screen.search
 
 import android.content.ContentValues.TAG
 import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -12,12 +13,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import org.koin.androidx.compose.koinViewModel
 import payback.group.imagefinder.architecture.ViewState
-import payback.group.imagefinder.ui.component.HeadingTextComponent
+import payback.group.imagefinder.ui.component.AlertDialog
+import payback.group.imagefinder.ui.component.EmptyComponent
 import payback.group.imagefinder.ui.component.Loader
 import payback.group.imagefinder.ui.navigation.NavigationItem
+import payback.group.imagefinder.ui.theme.DialogTitle
+import payback.group.imagefinder.ui.theme.NotFound
 import payback.group.model.Search
 
 @Composable
@@ -29,11 +34,15 @@ fun SearchScreen(navController: NavController) {
 
     var selectedItem by remember { mutableStateOf<Search.Hit?>(null) }
 
+    val openAlertDialog = remember { mutableStateOf(false) }
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier.fillMaxSize().background(Color.White)) {
         SearchBox(
             onTextChanged = { newText ->
                 viewModel.dispatch(SearchAction.DoingSearch(newText))
+            },
+            onCleared = {
+                // if you need you cab add action.
             }
         )
 
@@ -48,6 +57,7 @@ fun SearchScreen(navController: NavController) {
                 val res = (searchResult as ViewState.Success).model
                 Log.d(TAG, "Success${res.total} ")
                 SearchList(list = res.hits) {
+                    openAlertDialog.value = true
                     selectedItem = it
                 }
             }
@@ -58,22 +68,28 @@ fun SearchScreen(navController: NavController) {
 
             }
 
-            is ViewState.Empty ->
-
-                HeadingTextComponent(value = "Nothingg...")
+            is ViewState.Empty -> EmptyComponent(NotFound)
         }
 
-        selectedItem?.let {
-//            BottomSheetDialogWithButtons(onDismiss = {}, onNoClicked = {}, onYesClicked = {})
-            navController.navigate("${NavigationItem.Detail.route}/${it.id}") {
-                launchSingleTop = true
-                // Pass model as argument
-//                putParcelable("model", model)
-            }
-        }
 
+        if (openAlertDialog.value) {
+            AlertDialog(
+                dialogText = DialogTitle,
+                onDismissRequest = {
+                    openAlertDialog.value = false
+                },
+                onConfirmation = {
+                    openAlertDialog.value = false
+                    selectedItem?.let {
+                        navController.navigate("${NavigationItem.Detail.route}/${it.id}") {
+                            launchSingleTop = true
+                        }
+                    }
+
+                },
+            )
+        }
     }
-
 
 }
 
