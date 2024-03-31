@@ -1,5 +1,8 @@
 @file:Suppress("UnstableApiUsage")
 
+include(":core:test")
+
+
 include(":core:shared")
 
 

@@ -13,4 +13,5 @@ dependencies {
     implementation(libs.okhttp.logging)
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.kotlin.serialization)
+    testImplementation(libs.okhttp.mockWebServer)
 }

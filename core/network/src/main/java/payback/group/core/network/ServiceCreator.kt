@@ -15,6 +15,9 @@ const val BASE_URL: String = "https://pixabay.com"
 internal class ServiceCreator private constructor(private val builder: Builder) {
 
     private var retrofit: Retrofit
+    val baseUrl: String
+        get() = retrofit.baseUrl().toString()
+
 
     init {
         val okHttpClient = OkHttpClient.Builder().apply {

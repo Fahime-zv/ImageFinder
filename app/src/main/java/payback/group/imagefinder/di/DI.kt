@@ -9,6 +9,8 @@ import payback.group.imagefinder.ui.screen.search.SearchViewModel
 val appDiModule = module {
     includes(domainDiModule)
 
+
+
     viewModel{
         SearchViewModel(searchImageUseCase = get(), dispatcherProvider = get())
     }

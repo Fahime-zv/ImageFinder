@@ -35,4 +35,16 @@ internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension<*, 
 
     configureKotlin()
 
+    dependencies {
+//
+//        add("testImplementation", project(":core:test:kotlin-test"))
+//        add("androidTestImplementation", project(":core:test:kotlin-test"))
+
+        add("androidTestImplementation", libs.findLibrary("androidx.test.ext").get())
+        add("androidTestImplementation", libs.findLibrary("androidx.test.runner").get())
+        add("androidTestImplementation", libs.findLibrary("kotlin.test").get())
+        add("androidTestImplementation", libs.findLibrary("mockk.android").get())
+
+    }
+
 }
