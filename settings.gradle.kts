@@ -1,21 +1,4 @@
 @file:Suppress("UnstableApiUsage")
-
-include(":core:test")
-
-
-include(":core:shared")
-
-
-include(":core:data")
-
-include(":core:model")
-
-
-include(":core:domain")
-
-
-
-
 pluginManagement {
     includeBuild("build-logic")
     repositories {
@@ -40,6 +23,10 @@ dependencyResolutionManagement {
 
 rootProject.name = "Image Finder"
 include(":app")
+include(":core:shared")
+include(":core:model")
 include(":core:network")
+include(":core:data")
+include(":core:domain")
 
  
