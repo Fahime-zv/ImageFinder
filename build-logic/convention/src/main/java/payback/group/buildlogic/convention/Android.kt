@@ -8,7 +8,7 @@ import org.gradle.kotlin.dsl.dependencies
  * Configure base Kotlin with Android options
  */
 @Suppress("UnstableApiUsage")
-internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension<*, *, *, *, *>, ) {
+internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension<*, *, *, *, *>) {
     commonExtension.apply {
         compileSdk = AndroidDefaults.COMPILE_SDK
 
@@ -36,10 +36,7 @@ internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension<*, 
     configureKotlin()
 
     dependencies {
-//
-//        add("testImplementation", project(":core:test:kotlin-test"))
-//        add("androidTestImplementation", project(":core:test:kotlin-test"))
-
+        add("testImplementation", project(":core:kotlinTest"))
         add("androidTestImplementation", libs.findLibrary("androidx.test.ext").get())
         add("androidTestImplementation", libs.findLibrary("androidx.test.runner").get())
         add("androidTestImplementation", libs.findLibrary("kotlin.test").get())

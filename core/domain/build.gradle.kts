@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "payback.group.domain"
+    namespace = "payback.group.core.domain"
 }
 
 dependencies {
