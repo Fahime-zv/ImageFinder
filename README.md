@@ -36,7 +36,7 @@ Testing has been implemented for core modules that contain domain, data, and net
 - Mockk
 - MockServer
 
-#SCreenShots
+# ScreenShots
 <p align="left">
  <image  src=https://github.com/Fahime-zv/ImageFinder/assets/25881716/ba5e9e6e-68a3-4d66-9dd5-1554c72f4025 height="400" width="200">
 <image src=https://github.com/Fahime-zv/ImageFinder/assets/25881716/d94c94cc-22ba-4f0a-a4cc-020d300422a8  height="400" width="200">
