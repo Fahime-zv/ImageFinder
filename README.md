@@ -2,7 +2,7 @@
 
 # About
 
-There are a lot of pictures available on Pixay,  and you can see more detail.
+There are a lot of pictures available on Pixay,  and you can  search  for them and see more detail.
 
 In addition, it searches "fruits"  for first time and shows all results and you can even view all results by pagination. 
 
